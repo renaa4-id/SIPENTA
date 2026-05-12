@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a56db" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Tata Tertib</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+    <link rel="icon" href="../assets/img/icon-sipenta.png" sizes="32x32" />
+  </head>
+  <body class="dashboard-page">
+    <header style="position: relative; z-index: 1050">
+      <nav class="navbar main-navbar" aria-label="Navigasi utama">
+        <div class="container-fluid px-3">
+          <a
+            class="navbar-brand d-flex align-items-center gap-2"
+            href="dashboard.html"
+          >
+            <i class="bi bi-shield-check-fill nav-brand-icon"></i>
+            <span class="nav-brand-text">SIPENTA</span>
+          </a>
+          <div class="d-flex align-items-center gap-2 ms-auto">
+            <div class="dropdown">
+              <button
+                class="btn user-dropdown-btn d-flex align-items-center gap-2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Menu akun"
+              >
+                <div class="avatar-sm" id="navAvatar">AD</div>
+                <span class="fw-semibold small d-none d-sm-inline" id="navName"
+                  >Admin</span
+                >
+                <i class="bi bi-chevron-down small d-none d-sm-inline"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow">
+                <li class="px-3 py-2 border-bottom">
+                  <p class="fw-bold mb-0 small" id="dropdownName">
+                    Administrator
+                  </p>
+                  <p
+                    class="text-muted mb-0"
+                    style="font-size: 0.72rem"
+                    id="dropdownRole"
+                  >
+                    Administrator
+                  </p>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="profil.html"
+                    ><i class="bi bi-person me-2 text-primary"></i>Profil
+                    Saya</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="pengaturan.html"
+                    ><i class="bi bi-gear me-2 text-secondary"></i>Pengaturan</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="laporan-cetak.html"
+                    ><i class="bi bi-printer me-2 text-success"></i>Cetak
+                    Laporan</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <button
+              class="btn btn-hamburger d-lg-none"
+              type="button"
+              onclick="bukaOffcanvas()"
+              aria-label="Buka menu"
+            >
+              <i class="bi bi-list"></i>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div
+      class="offcanvas offcanvas-start sidebar-offcanvas"
+      tabindex="-1"
+      id="sidebarOffcanvas"
+      aria-labelledby="sidebarOffcanvasLabel"
+    >
+      <div class="offcanvas-header">
+        <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-shield-check-fill text-primary fs-5"></i>
+          <h5 class="offcanvas-title mb-0" id="sidebarOffcanvasLabel">
+            SIPENTA
+          </h5>
+        </div>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Tutup"
+        ></button>
+      </div>
+      <div class="offcanvas-body p-0">
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-avatar" id="mobileAvatar">AD</div>
+          <div>
+            <p class="fw-bold mb-0 small" id="mobileUserName">Admin</p>
+            <p
+              class="text-muted mb-0"
+              style="font-size: 0.72rem"
+              id="mobileUserRole"
+            >
+              Administrator
+            </p>
+          </div>
+        </div>
+        <nav aria-label="Navigasi mobile">
+          <ul class="sidebar-nav list-unstyled px-2 py-2">
+            <li><span class="sidebar-section-label">MENU UTAMA</span></li>
+            <li>
+              <a href="dashboard.html" class="sidebar-link"
+                ><i class="bi bi-grid-fill"></i><span>Beranda</span></a
+              >
+            </li>
+            <li>
+              <a href="pelanggaran.html" class="sidebar-link"
+                ><i class="bi bi-exclamation-circle-fill"></i
+                ><span>Pelanggaran</span></a
+              >
+            </li>
+            <li>
+              <a href="tataTertib.html" class="sidebar-link active"
+                ><i class="bi bi-book-fill"></i><span>Tata Tertib</span></a
+              >
+            </li>
+            <li>
+              <a href="siswa.html" class="sidebar-link"
+                ><i class="bi bi-people-fill"></i><span>Data Siswa</span></a
+              >
+            </li>
+            <li><span class="sidebar-section-label mt-2">LAPORAN</span></li>
+            <li>
+              <a href="laporan-statistik.html" class="sidebar-link"
+                ><i class="bi bi-bar-chart-fill"></i><span>Statistik</span></a
+              >
+            </li>
+            <li>
+              <a href="laporan-cetak.html" class="sidebar-link"
+                ><i class="bi bi-printer-fill"></i><span>Cetak Laporan</span></a
+              >
+            </li>
+            <li><span class="sidebar-section-label mt-2">AKUN</span></li>
+            <li>
+              <a href="profil.html" class="sidebar-link"
+                ><i class="bi bi-person-circle"></i><span>Profil</span></a
+              >
+            </li>
+            <li>
+              <a href="profil.html" class="sidebar-link"
+                ><i class="bi bi-gear-fill"></i><span>Pengaturan</span></a
+              >
+            </li>
+            <li class="mt-2">
+              <a
+                href="#"
+                onclick="logout()"
+                class="sidebar-link sidebar-link-danger"
+                ><i class="bi bi-box-arrow-right"></i><span>Keluar</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="page-wrapper d-flex">
+      <aside
+        class="sidebar d-none d-lg-flex flex-column"
+        aria-label="Navigasi sidebar"
+      >
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-avatar" id="desktopSidebarAvatar">AD</div>
+          <div class="min-w-0">
+            <p class="fw-bold mb-0 small text-truncate" id="desktopSidebarName">
+              Admin
+            </p>
+            <p
+              class="text-muted mb-0 text-truncate"
+              style="font-size: 0.7rem"
+              id="desktopSidebarRole"
+            >
+              Administrator
+            </p>
+          </div>
+        </div>
+        <nav class="flex-grow-1">
+          <ul class="sidebar-nav list-unstyled px-2 py-1">
+            <li><span class="sidebar-section-label">MENU UTAMA</span></li>
+            <li>
+              <a href="dashboard.html" class="sidebar-link"
+                ><i class="bi bi-grid-fill"></i><span>Beranda</span></a
+              >
+            </li>
+            <li>
+              <a href="pelanggaran.html" class="sidebar-link"
+                ><i class="bi bi-exclamation-circle-fill"></i
+                ><span>Pelanggaran</span></a
+              >
+            </li>
+            <li>
+              <a href="tataTertib.html" class="sidebar-link active"
+                ><i class="bi bi-book-fill"></i><span>Tata Tertib</span></a
+              >
+            </li>
+            <li>
+              <a href="siswa.html" class="sidebar-link"
+                ><i class="bi bi-people-fill"></i><span>Data Siswa</span></a
+              >
+            </li>
+            <li><span class="sidebar-section-label mt-3">LAPORAN</span></li>
+            <li>
+              <a href="laporan-statistik.html" class="sidebar-link"
+                ><i class="bi bi-bar-chart-fill"></i><span>Statistik</span></a
+              >
+            </li>
+            <li>
+              <a href="laporan-cetak.html" class="sidebar-link"
+                ><i class="bi bi-printer-fill"></i><span>Cetak Laporan</span></a
+              >
+            </li>
+            <li><span class="sidebar-section-label mt-3">AKUN</span></li>
+            <li>
+              <a href="profil.html" class="sidebar-link"
+                ><i class="bi bi-person-circle"></i><span>Profil</span></a
+              >
+            </li>
+            <li>
+              <a href="profil.html" class="sidebar-link"
+                ><i class="bi bi-gear-fill"></i><span>Pengaturan</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="sidebar-bottom">
+          <a
+            href="#"
+            onclick="logout()"
+            class="sidebar-link sidebar-link-danger"
+            ><i class="bi bi-box-arrow-right"></i><span>Keluar</span></a
+          >
+        </div>
+      </aside>
+
+      <main class="main-content flex-grow-1" id="mainContent">
+        <div class="content-inner">
+          <section
+            id="tataTertib"
+            class="content-section active-section"
+            aria-labelledby="titleTataTertib"
+          >
+            <div class="page-hgroup">
+              <p class="page-eyebrow">Referensi</p>
+              <h2 id="titleTataTertib">Buku Tata Tertib Sekolah</h2>
+              <p class="page-desc">Aturan dan poin pelanggaran siswa.</p>
+            </div>
+
+            <div class="poin-scale-info mb-3">
+              <div class="poin-scale-item">
+                <span class="badge-ringan px-2 py-1">1–15 Poin</span
+                ><span class="ms-2 small">Ringan — Teguran lisan</span>
+              </div>
+              <div class="poin-scale-item">
+                <span class="badge-sedang px-2 py-1">16–40 Poin</span
+                ><span class="ms-2 small">Sedang — Panggil orang tua</span>
+              </div>
+              <div class="poin-scale-item">
+                <span class="badge-berat px-2 py-1">41–100 Poin</span
+                ><span class="ms-2 small">Berat — Skors / sidang</span>
+              </div>
+            </div>
+
+            <div class="row g-2 g-md-3" id="tataTertibList"></div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div
+      class="toast-container position-fixed bottom-0 end-0 p-3"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <div
+        id="appToast"
+        class="toast custom-toast align-items-center"
+        role="alert"
+      >
+        <div class="d-flex">
+          <div class="toast-body" id="toastMessage"></div>
+          <button
+            type="button"
+            class="btn-close me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Tutup"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/core/config.js"></script>
+    <script src="../assets/js/data/tatatertib-data.js"></script>
+    <script src="../assets/js/core/storage.js"></script>
+    <script src="../assets/js/core/utils.js"></script>
+    <script src="../assets/js/core/nav.js"></script>
+    <script src="../assets/js/pages/tatatertib.js"></script>
+    <script>
+      tampilkanTataTertib();
+    </script>
+
+    <script>
+      function bukaOffcanvas() {
+        var el = document.getElementById("sidebarOffcanvas");
+        if (!el) return;
+        var oc = bootstrap.Offcanvas.getOrCreateInstance(el);
+        oc.toggle();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a56db" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Beranda</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+    <link rel="icon" href="../assets/img/icon-sipenta.png" sizes="32x32" />
+  </head>
+  <body class="dashboard-page">
+    <header style="position: relative; z-index: 1050">
+      <nav class="navbar main-navbar" aria-label="Navigasi utama">
+        <div class="container-fluid px-3">
+          <a
+            class="navbar-brand d-flex align-items-center gap-2"
+            href="dashboard.html"
+          >
+            <i class="bi bi-shield-check-fill nav-brand-icon"></i>
+            <span class="nav-brand-text">SIPENTA</span>
+          </a>
+          <div class="d-flex align-items-center gap-2 ms-auto">
+            <div class="dropdown">
+              <button
+                class="btn user-dropdown-btn d-flex align-items-center gap-2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Menu akun"
+              >
+                <div class="avatar-sm" id="navAvatar">AD</div>
+                <span class="fw-semibold small d-none d-sm-inline" id="navName"
+                  >Admin</span
+                >
+                <i class="bi bi-chevron-down small d-none d-sm-inline"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow">
+                <li class="px-3 py-2 border-bottom">
+                  <p class="fw-bold mb-0 small" id="dropdownName">
+                    Administrator
+                  </p>
+                  <p
+                    class="text-muted mb-0"
+                    style="font-size: 0.72rem"
+                    id="dropdownRole"
+                  >
+                    Administrator
+                  </p>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="profil.html"
+                    ><i class="bi bi-person me-2 text-primary"></i>Profil
+                    Saya</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="pengaturan.html"
+                    ><i class="bi bi-gear me-2 text-secondary"></i>Pengaturan</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="laporan-cetak.html"
+                    ><i class="bi bi-printer me-2 text-success"></i>Cetak
+                    Laporan</a
+                  >
+                </li>
+
+              </ul>
+            </div>
+            <button
+              class="btn btn-hamburger d-lg-none"
+              type="button"
+              onclick="bukaOffcanvas()"
+              aria-label="Buka menu"
+            >
+              <i class="bi bi-list"></i>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div
+      class="offcanvas offcanvas-start sidebar-offcanvas"
+      tabindex="-1"
+      id="sidebarOffcanvas"
+      aria-labelledby="sidebarOffcanvasLabel"
+    >
+      <div class="offcanvas-header">
+        <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-shield-check-fill text-primary fs-5"></i>
+          <h5 class="offcanvas-title mb-0" id="sidebarOffcanvasLabel">
+            SIPENTA
+          </h5>
+        </div>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Tutup"
+        ></button>
+      </div>
+      <div class="offcanvas-body p-0">
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-avatar" id="mobileAvatar">AD</div>
+          <div>
+            <p class="fw-bold mb-0 small" id="mobileUserName">Admin</p>
+            <p
+              class="text-muted mb-0"
+              style="font-size: 0.72rem"
+              id="mobileUserRole"
+            >
+              Administrator
+            </p>
+          </div>
+        </div>
+        <nav aria-label="Navigasi mobile">
+          <ul class="sidebar-nav list-unstyled px-2 py-2">
+            <li><span class="sidebar-section-label">MENU UTAMA</span></li>
+            <li>
+              <a href="dashboard.html" class="sidebar-link active"
+                ><i class="bi bi-grid-fill"></i><span>Beranda</span></a
+              >
+            </li>
+            <li>
+              <a href="pelanggaran.html" class="sidebar-link"
+                ><i class="bi bi-exclamation-circle-fill"></i
+                ><span>Pelanggaran</span></a
+              >
+            </li>
+            <li>
+              <a href="tataTertib.html" class="sidebar-link"
+                ><i class="bi bi-book-fill"></i><span>Tata Tertib</span></a
+              >
+            </li>
+            <li>
+              <a href="siswa.html" class="sidebar-link"
+                ><i class="bi bi-people-fill"></i><span>Data Siswa</span></a
+              >
+            </li>
+            <li><span class="sidebar-section-label mt-2">LAPORAN</span></li>
+            <li>
+              <a href="laporan-statistik.html" class="sidebar-link"
+                ><i class="bi bi-bar-chart-fill"></i><span>Statistik</span></a
+              >
+            </li>
+            <li>
+              <a href="laporan-cetak.html" class="sidebar-link"
+                ><i class="bi bi-printer-fill"></i><span>Cetak Laporan</span></a
+              >
+            </li>
+            <li><span class="sidebar-section-label mt-2">AKUN</span></li>
+            <li>
+              <a href="profil.html" class="sidebar-link"
+                ><i class="bi bi-person-circle"></i><span>Profil</span></a
+              >
+            </li>
+            <li>
+              <a href="profil.html" class="sidebar-link"
+                ><i class="bi bi-gear-fill"></i><span>Pengaturan</span></a
+              >
+            </li>
+            <li class="mt-2">
+              <a
+                href="#"
+                onclick="logout()"
+                class="sidebar-link sidebar-link-danger"
+                ><i class="bi bi-box-arrow-right"></i><span>Keluar</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="page-wrapper d-flex">
+      <aside
+        class="sidebar d-none d-lg-flex flex-column"
+        aria-label="Navigasi sidebar"
+      >
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-avatar" id="desktopSidebarAvatar">AD</div>
+          <div class="min-w-0">
+            <p class="fw-bold mb-0 small text-truncate" id="desktopSidebarName">
+              Admin
+            </p>
+            <p
+              class="text-muted mb-0 text-truncate"
+              style="font-size: 0.7rem"
+              id="desktopSidebarRole"
+            >
+              Administrator
+            </p>
+          </div>
+        </div>
+        <nav class="flex-grow-1">
+          <ul class="sidebar-nav list-unstyled px-2 py-1">
+            <li><span class="sidebar-section-label">MENU UTAMA</span></li>
+            <li>
+              <a href="dashboard.html" class="sidebar-link active"
+                ><i class="bi bi-grid-fill"></i><span>Beranda</span></a
+              >
+            </li>
+            <li>
+              <a href="pelanggaran.html" class="sidebar-link"
+                ><i class="bi bi-exclamation-circle-fill"></i
+                ><span>Pelanggaran</span></a
+              >
+            </li>
+            <li>
+              <a href="tataTertib.html" class="sidebar-link"
+                ><i class="bi bi-book-fill"></i><span>Tata Tertib</span></a
+              >
+            </li>
+            <li>
+              <a href="siswa.html" class="sidebar-link"
+                ><i class="bi bi-people-fill"></i><span>Data Siswa</span></a
+              >
+            </li>
+            <li><span class="sidebar-section-label mt-3">LAPORAN</span></li>
+            <li>
+              <a href="laporan-statistik.html" class="sidebar-link"
+                ><i class="bi bi-bar-chart-fill"></i><span>Statistik</span></a
+              >
+            </li>
+            <li>
+              <a href="laporan-cetak.html" class="sidebar-link"
+                ><i class="bi bi-printer-fill"></i><span>Cetak Laporan</span></a
+              >
+            </li>
+            <li><span class="sidebar-section-label mt-3">AKUN</span></li>
+            <li>
+              <a href="profil.html" class="sidebar-link"
+                ><i class="bi bi-person-circle"></i><span>Profil</span></a
+              >
+            </li>
+            <li>
+              <a href="profil.html" class="sidebar-link"
+                ><i class="bi bi-gear-fill"></i><span>Pengaturan</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="sidebar-bottom">
+          <a
+            href="#"
+            onclick="logout()"
+            class="sidebar-link sidebar-link-danger"
+            ><i class="bi bi-box-arrow-right"></i><span>Keluar</span></a
+          >
+        </div>
+      </aside>
+
+      <main class="main-content flex-grow-1" id="mainContent">
+        <div class="content-inner">
+          <section
+            id="beranda"
+            class="content-section active-section"
+            aria-labelledby="titleBeranda"
+          >
+            <div class="page-hgroup">
+              <p class="page-eyebrow">Dashboard</p>
+              <h2 id="titleBeranda">
+                Halo, <span id="greetName">Admin</span>! 👋
+              </h2>
+              <p class="page-desc">
+                Pantau tata tertib &amp; pelanggaran siswa secara real-time.
+              </p>
+            </div>
+
+            <div class="row g-2 g-md-3 mb-3">
+              <div class="col-6 col-xl-3">
+                <article class="stat-card stat-blue">
+                  <div class="stat-icon">
+                    <i class="bi bi-people-fill"></i>
+                  </div>
+                  <div class="stat-body">
+                    <span
+                      class="stat-value"
+                      id="statJumlahSiswa"
+                      data-target="0"
+                      style="cursor:pointer"
+                      title="Klik untuk edit jumlah siswa"
+                      onclick="editJumlahSiswa()"
+                      >0</span
+                    >
+                    <span class="stat-label">Jumlah Siswa</span>
+                  </div>
+                </article>
+              </div>
+              <div class="col-6 col-xl-3">
+                <article class="stat-card stat-red">
+                  <div class="stat-icon">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                  </div>
+                  <div class="stat-body">
+                    <span
+                      class="stat-value"
+                      id="statPelBulanIni"
+                      data-target="82"
+                      >0</span
+                    >
+                    <span class="stat-label">Pelanggaran Bulan Ini</span>
+                  </div>
+                </article>
+              </div>
+              <div class="col-6 col-xl-3">
+                <article class="stat-card stat-green">
+                  <div class="stat-icon">
+                    <i class="bi bi-person-x-fill"></i>
+                  </div>
+                  <div class="stat-body">
+                    <span
+                      class="stat-value"
+                      id="statBermasalah"
+                      data-target="14"
+                      >0</span
+                    >
+                    <span class="stat-label">Siswa Bermasalah</span>
+                  </div>
+                </article>
+              </div>
+              <div class="col-6 col-xl-3">
+                <article class="stat-card stat-yellow">
+                  <div class="stat-icon"><i class="bi bi-star-fill"></i></div>
+                  <div class="stat-body">
+                    <span class="stat-value" id="statKepatuhan" data-target="96"
+                      >0</span
+                    >
+                    <span class="stat-label">% Kepatuhan</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Modal edit jumlah siswa -->
+            <div class="modal fade" id="modalEditSiswa" tabindex="-1" aria-labelledby="labelModalEditSiswa" aria-hidden="true">
+              <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h6 class="modal-title fw-bold" id="labelModalEditSiswa">
+                      <i class="bi bi-pencil-fill me-2 text-primary"></i>Edit Jumlah Siswa
+                    </h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                  </div>
+                  <div class="modal-body">
+                    <label class="form-label small fw-semibold">Total Siswa</label>
+                    <input type="number" class="form-control form-control-sm" id="inputJumlahSiswa" min="0" placeholder="Masukkan jumlah siswa" />
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary btn-sm" id="btnSimpanJumlahSiswa">
+                      <i class="bi bi-save me-1"></i>Simpan
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row g-2 g-md-3 mb-3">
+              <div class="col-12 col-lg-8">
+                <article class="card-panel h-100">
+                  <header
+                    class="panel-header d-flex justify-content-between align-items-center"
+                  >
+                    <h3 class="panel-title">
+                      <i class="bi bi-clock-history me-2 text-primary"></i
+                      >Pelanggaran Terbaru
+                    </h3>
+                    <a href="pelanggaran.html" class="btn-text-link"
+                      >Lihat Semua <i class="bi bi-arrow-right"></i
+                    ></a>
+                  </header>
+                  <div class="table-responsive">
+                    <table
+                      class="table custom-table mb-0"
+                      aria-label="Pelanggaran terbaru"
+                    >
+                      <thead>
+                        <tr>
+                          <th>Siswa</th>
+                          <th>Pelanggaran</th>
+                          <th>Kat.</th>
+                          <th>Poin</th>
+                          <th>Status</th>
+                          <th>Pengirim</th>
+                        </tr>
+                      </thead>
+                      <tbody id="recentViolationTable"></tbody>
+                    </table>
+                  </div>
+                </article>
+              </div>
+              <div class="col-12 col-lg-4">
+                <article class="card-panel h-100">
+                  <header class="panel-header">
+                    <h3 class="panel-title">
+                      <i class="bi bi-pie-chart-fill me-2 text-primary"></i
+                      >Kategori
+                    </h3>
+                  </header>
+                  <ul
+                    class="category-list list-unstyled"
+                    id="categoryList"
+                  ></ul>
+                </article>
+              </div>
+            </div>
+
+            <div class="row g-2 g-md-3">
+              <div class="col-12">
+                <p class="section-sub-label">Akses Cepat</p>
+              </div>
+              <div class="col-6 col-md-3">
+                <button
+                  type="button"
+                  class="quick-card w-100"
+                  onclick="window.location.href='pelanggaran.html'"
+                >
+                  <i class="bi bi-plus-circle-fill"></i
+                  ><span>Tambah Pelanggaran</span>
+                </button>
+              </div>
+              <div class="col-6 col-md-3">
+                <button
+                  type="button"
+                  class="quick-card w-100"
+                  onclick="window.location.href='siswa.html'"
+                >
+                  <i class="bi bi-people-fill"></i><span>Data Siswa</span>
+                </button>
+              </div>
+              <div class="col-6 col-md-3">
+                <button
+                  type="button"
+                  class="quick-card w-100"
+                  onclick="window.location.href='laporan-statistik.html'"
+                >
+                  <i class="bi bi-bar-chart-fill"></i><span>Lihat Laporan</span>
+                </button>
+              </div>
+              <div class="col-6 col-md-3">
+                <button
+                  type="button"
+                  class="quick-card w-100"
+                  onclick="window.location.href='laporan-cetak.html'"
+                >
+                  <i class="bi bi-printer-fill"></i><span>Cetak Laporan</span>
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div
+      class="toast-container position-fixed bottom-0 end-0 p-3"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <div
+        id="appToast"
+        class="toast custom-toast align-items-center"
+        role="alert"
+      >
+        <div class="d-flex">
+          <div class="toast-body" id="toastMessage"></div>
+          <button
+            type="button"
+            class="btn-close me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Tutup"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/core/config.js"></script>
+    <script src="../assets/js/core/storage.js"></script>
+    <script src="../assets/js/core/utils.js"></script>
+    <script src="../assets/js/core/nav.js"></script>
+    <script src="../assets/js/pages/pelanggaran.js"></script>
+    <script src="../assets/js/pages/laporan.js"></script>
+    <script src="../assets/js/pages/dashboard.js"></script>
+    <script>
+      window.hapusPelanggaran = hapusPelanggaran;
+      window.ubahStatus = ubahStatus;
+    </script>
+
+    <script>
+      function bukaOffcanvas() {
+        var el = document.getElementById("sidebarOffcanvas");
+        if (!el) return;
+        var oc = bootstrap.Offcanvas.getOrCreateInstance(el);
+        oc.toggle();
+      }
+    </script>
+  </body>
+</html>

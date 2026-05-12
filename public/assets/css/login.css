@@ -1,0 +1,231 @@
+/* ================================================
+   login.css — Halaman login & register
+   ================================================ */
+
+body.login-page {
+  background: #e8f1ff;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.bg-grid {
+  position: fixed; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridDrift 30s linear infinite;
+}
+@keyframes gridDrift { to { background-position: 40px 40px; } }
+
+.bg-glow {
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 40%, rgba(59,130,246,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 45% at 80% 70%, rgba(147,197,253,.15) 0%, transparent 55%);
+}
+
+/* ── Layout utama (responsif) ── */
+.login-layout {
+  position: relative; z-index: 1;
+  display: flex; min-height: 100vh;
+  flex-direction: column;        /* mobile: atas-bawah */
+}
+@media (min-width: 992px) {
+  .login-layout {
+    flex-direction: row;
+    align-items: flex-start; /* penting: agar sticky bisa bekerja */
+  }
+}
+
+/* ── Panel brand (biru) ── */
+.login-panel-brand {
+  position: relative; overflow: hidden;
+  background: linear-gradient(145deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
+  padding: 2rem 1.5rem 2.5rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.login-panel-brand::before {
+  content: ''; position: absolute;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: rgba(255,255,255,.07);
+  top: -80px; right: -80px;
+}
+.login-panel-brand::after {
+  content: ''; position: absolute;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: rgba(255,255,255,.05);
+  bottom: -50px; left: -50px;
+}
+@media (min-width: 992px) {
+  .login-panel-brand {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    flex: 0 0 42%;
+    padding: 3rem;
+    align-self: flex-start;
+  }
+  .login-panel-brand::before { width: 400px; height: 400px; top: -100px; right: -100px; }
+  .login-panel-brand::after  { width: 250px; height: 250px; bottom: -60px; left: -60px; }
+}
+
+.login-panel-brand-inner {
+  width: 100%; max-width: 340px;
+  display: flex; flex-direction: column; gap: 2rem;
+  position: relative; z-index: 1;
+}
+
+/* ── Panel form (putih) — PERBAIKAN UTAMA ── */
+.login-panel-form {
+  flex: 1;
+  background: #fff;
+  display: flex;
+  align-items: flex-start;      /* mulai dari atas, bukan tengah */
+  justify-content: center;
+  padding: 2.5rem 1.4rem 3rem;  /* padding bawah lebih besar agar tidak terpotong */
+  border-radius: 24px 24px 0 0;
+  margin-top: -20px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,.08);
+  min-height: calc(100vh - 260px); /* pastikan panel cukup tinggi di mobile */
+}
+@media (min-width: 992px) {
+  .login-panel-form {
+    border-radius: 0;
+    margin-top: 0;
+    box-shadow: none;
+    padding: 3rem 2rem;
+    align-items: center;         /* di desktop konten di tengah vertikal */
+    min-height: 100vh;
+  }
+}
+.login-panel-form-inner { width: 100%; max-width: 400px; }
+
+/* ── Brand elements ── */
+.brand-bg-text {
+  position: absolute; right: -30px; bottom: -50px;
+  font-family: var(--font-display);
+  font-size: 16rem; font-weight: 900;
+  letter-spacing: -8px; line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255,255,255,.07);
+  user-select: none; pointer-events: none;
+}
+.brand-logo {
+  width: 54px; height: 54px;
+  background: rgba(255,255,255,.2);
+  border: 2px solid rgba(255,255,255,.3);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; color: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  margin-bottom: 1.25rem;
+}
+.brand-title-big {
+  font-family: var(--font-display);
+  font-size: 3.8rem; font-weight: 900;
+  letter-spacing: -2px; line-height: 1;
+  color: #fff; margin-bottom: .5rem;
+}
+.brand-divider {
+  width: 40px; height: 3px;
+  background: rgba(255,255,255,.5);
+  border-radius: 2px; margin-bottom: .75rem;
+}
+.brand-desc { color: rgba(255,255,255,.8); font-size: .95rem; line-height: 1.6; }
+
+/* ── Stat pills ── */
+.stat-pills { display: flex; flex-direction: column; gap: .75rem; }
+.stat-pills li {
+  display: flex; align-items: center; gap: .85rem;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(6px);
+  border-radius: 12px; padding: .65rem 1rem;
+}
+.pill-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1rem; flex-shrink: 0;
+}
+.pill-icon.pill-red   { background: rgba(220,38,38,.35); }
+.pill-icon.pill-green { background: rgba(22,163,74,.35); }
+.pill-val { font-size: 1.2rem; font-weight: 700; color: #fff; margin: 0; }
+.pill-lbl { font-size: .72rem; color: rgba(255,255,255,.7); margin: 0; }
+.login-left-footer { color: rgba(255,255,255,.5); font-size: .75rem; }
+
+/* ── Form heading ── */
+.login-right-header { margin-bottom: 1.6rem; }
+.login-eyebrow {
+  font-size: .78rem; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--primary); margin-bottom: .4rem;
+}
+.login-title {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 700;
+  color: var(--txt-main); margin-bottom: .4rem;
+}
+.login-sub { color: var(--txt-muted); font-size: .875rem; }
+
+/* ── Tab Login/Daftar ── */
+.auth-tab-wrap {
+  display: flex; background: #f0f7ff;
+  border-radius: 12px; padding: .3rem;
+  margin-bottom: 1.4rem; gap: .3rem;
+}
+.auth-tab {
+  flex: 1; height: 40px; border: none; border-radius: 9px;
+  font-size: .875rem; font-weight: 600;
+  cursor: pointer; transition: all .2s; font-family: inherit;
+}
+.auth-tab.active  { background: #2563eb; color: #fff; box-shadow: 0 4px 12px rgba(37,99,235,.28); }
+.auth-tab.inactive { background: transparent; color: #5b7a9d; }
+.auth-tab.inactive:hover { background: #e0eeff; }
+
+/* ── Field input ── */
+.login-field { margin-bottom: 1rem; }
+.login-label { display: block; font-size: .8rem; font-weight: 600; color: var(--txt-main); margin-bottom: .4rem; }
+.login-input-wrap { position: relative; }
+.login-input-icon {
+  position: absolute; left: .9rem; top: 50%; transform: translateY(-50%);
+  color: var(--txt-muted); font-size: .9rem; pointer-events: none;
+}
+.login-input, .login-select {
+  width: 100%; height: 44px; padding: 0 2.5rem 0 2.5rem;
+  border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+  font-size: .875rem; font-family: inherit; background: #fff;
+  color: var(--txt-main); transition: border-color var(--ease), box-shadow var(--ease);
+  outline: none;
+}
+.login-select { padding-left: .85rem; }
+.login-input:focus, .login-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(26,86,219,.12);
+}
+.login-eye {
+  position: absolute; right: .7rem; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer;
+  color: var(--txt-muted); padding: .3rem;
+}
+
+/* ── Tombol submit ── */
+.login-btn {
+  width: 100%; height: 46px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff; border: none; border-radius: var(--radius-sm);
+  font-size: .9rem; font-weight: 600; font-family: inherit;
+  cursor: pointer; transition: opacity var(--ease), transform var(--ease);
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1.2rem;
+}
+.login-btn:hover    { opacity: .9; transform: translateY(-1px); }
+.login-btn:disabled { opacity: .7; cursor: not-allowed; }
+
+.field-error { color: var(--danger); font-size: .75rem; margin-top: .3rem; min-height: 1rem; }
+/* Toggle show/hide password tanpa mengubah type — agar Chrome tidak warning */
+input[type="password"].show-password {
+  -webkit-text-security: none;
+  text-security: none;
+}

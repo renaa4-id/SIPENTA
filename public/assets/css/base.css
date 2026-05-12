@@ -1,0 +1,51 @@
+:root {
+ 
+  --primary:       #1a56db;
+  --primary-dark:  #1341b0;
+  --primary-light: #e8f0ff;
+  --success:       #16a34a;
+  --danger:        #dc2626;
+  --warning:       #d97706;
+  --purple:        #7e22ce;
+  --teal:          #0891b2;
+
+  /* Warna background & surface */
+  --bg:        #f0f2f8;
+  --surface:   #ffffff;
+  --surface-2: #f9fafb;
+  --border:    #e5e7eb;
+
+  /* Warna teks */
+  --txt-main:  #111827;
+  --txt-muted: #6b7280;
+  --txt-light: #9ca3af;
+
+  /* Layout */
+  --sidebar-w: 220px;
+  --navbar-h:  58px;
+  --radius:    12px;
+  --radius-sm: 8px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.07);
+  --shadow-md: 0 4px 14px rgba(0,0,0,.09);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,.12);
+
+  /* Font & animasi */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+  --ease:         .22s cubic-bezier(.4,0,.2,1);
+}
+
+/* Reset dasar */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: .9375rem;
+  color: var(--txt-main);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}

@@ -1,0 +1,264 @@
+/* ================================================
+   components.css — Komponen UI reusable
+   (stat cards, tabel, badge, modal, chart, dll)
+   ================================================ */
+
+/* ── Stat Cards ── */
+.stat-card {
+  background: var(--surface); border-radius: var(--radius);
+  padding: .85rem .9rem; display: flex; align-items: center; gap: .75rem;
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--ease), transform var(--ease);
+}
+.stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.stat-icon {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.stat-label { font-size: .72rem; color: var(--txt-muted); margin-bottom: .1rem; }
+.stat-value { font-size: 1.5rem; font-weight: 700; color: var(--txt-main); line-height: 1; }
+.stat-footer { font-size: .7rem; color: var(--txt-muted); margin-top: .2rem; }
+
+/* ── Card Panel (container umum) ── */
+.card-panel {
+  background: var(--surface); border-radius: var(--radius);
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.card-panel-header {
+  padding: .9rem 1rem; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: .5rem;
+}
+.card-panel-title {
+  font-size: .88rem; font-weight: 700; color: var(--txt-main);
+  display: flex; align-items: center; gap: .45rem;
+}
+.card-panel-body { padding: 1rem; }
+
+/* ── Tabel ── */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+.custom-table {
+  font-size: .8rem; color: var(--txt-main);
+  min-width: 500px; width: 100%;
+  border-collapse: collapse;
+}
+.custom-table thead th {
+  background: var(--surface-2); padding: .65rem .75rem;
+  font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .05em;
+  color: var(--txt-muted); border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.custom-table tbody td {
+  padding: .65rem .75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.custom-table tbody tr:last-child td { border-bottom: none; }
+.custom-table tbody tr:hover { background: var(--surface-2); }
+
+/* ── Badge status & kategori ── */
+[class^="badge-"] {
+  display: inline-block; padding: .2rem .55rem;
+  border-radius: 20px; font-size: .68rem; font-weight: 600;
+  white-space: nowrap;
+}
+.badge-proses   { background: #fffbeb; color: #b45309; }
+.badge-selesai  { background: #f0fdf4; color: #15803d; }
+.badge-ringan   { background: #f0fdf4; color: #15803d; }
+.badge-sedang   { background: #fffbeb; color: #b45309; }
+.badge-berat    { background: #fef2f2; color: #b91c1c; }
+
+/* ── Poin chip (di kartu siswa) ── */
+.poin-chip {
+  display: inline-block; padding: .2rem .55rem;
+  border-radius: 20px; font-size: .7rem; font-weight: 600;
+}
+.poin-aman    { background: #f0fdf4; color: #15803d; }
+.poin-waspada { background: #fffbeb; color: #b45309; }
+.poin-kritis  { background: #fef2f2; color: #b91c1c; }
+
+/* Warna badge sesuai poin level */
+.poin-ringan { background: #f0fdf4; color: #15803d; }
+.poin-sedang { background: #fffbeb; color: #b45309; }
+.poin-berat  { background: #fef2f2; color: #b91c1c; }
+
+/* ── Kartu Rule (tata tertib) ── */
+.rule-card {
+  background: var(--surface); border-radius: var(--radius);
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.rule-card-header {
+  display: flex; align-items: center; gap: .75rem;
+  padding: .9rem 1rem; border-bottom: 1px solid var(--border);
+}
+.rule-icon {
+  width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 1rem;
+}
+.rule-card-body { padding: .75rem 1rem; display: flex; flex-direction: column; gap: .4rem; }
+.rule-item {
+  display: flex; align-items: flex-start; gap: .55rem;
+  font-size: .8rem; color: var(--txt-main); padding: .3rem 0;
+  border-bottom: 1px dashed var(--border);
+}
+.rule-item:last-child { border-bottom: none; }
+.rule-poin {
+  display: inline-block; padding: .15rem .45rem;
+  border-radius: 6px; font-size: .68rem; font-weight: 700;
+  flex-shrink: 0; margin-top: .1rem;
+}
+
+/* ── Kartu Siswa ── */
+.siswa-card {
+  background: var(--surface); border-radius: var(--radius);
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  padding: 1rem; display: flex; align-items: center; gap: .85rem;
+  cursor: pointer; transition: box-shadow var(--ease), transform var(--ease);
+}
+.siswa-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.siswa-avatar {
+  width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .95rem; font-weight: 700;
+}
+.siswa-name  { font-size: .88rem; font-weight: 700; color: var(--txt-main); margin-bottom: .15rem; }
+.siswa-meta  { font-size: .72rem; color: var(--txt-muted); margin-bottom: .3rem; }
+
+/* ── Mini stat (di modal detail siswa) ── */
+.mini-stat {
+  background: var(--surface-2); border-radius: var(--radius-sm);
+  padding: .5rem .4rem; display: flex; flex-direction: column; align-items: center;
+}
+.mini-val { font-size: 1.1rem; font-weight: 700; color: var(--txt-main); }
+.mini-lbl { font-size: .65rem; color: var(--txt-muted); }
+.mini-stat.mini-danger .mini-val { color: var(--danger); }
+.mini-stat.mini-success .mini-val { color: var(--success); }
+.mini-stat.mini-warning .mini-val { color: var(--warning); }
+
+/* ── Avatar profil ── */
+.profil-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.35rem; font-weight: 700;
+}
+
+/* ── Chart bars (grafik batang) ── */
+.chart-bars {
+  display: flex; align-items: flex-end; gap: .5rem;
+  height: 120px; padding: 0 .5rem;
+}
+.bar-item {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: .4rem; height: 100%;
+}
+.bar-fill {
+  width: 100%; border-radius: 4px 4px 0 0;
+  min-height: 4px; transition: height .4s ease;
+  position: relative;
+}
+.bar-label { font-size: .65rem; color: var(--txt-muted); white-space: nowrap; }
+
+/* Bar kategori (di beranda & laporan) */
+.cat-bar-wrap { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.cat-bar { height: 100%; border-radius: 3px; transition: width .4s ease; }
+
+/* ── Toast notifikasi ── */
+.custom-toast {
+  min-width: 260px; background: var(--surface);
+  border-radius: var(--radius-sm); border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+}
+.toast-body { font-size: .82rem; color: var(--txt-main); }
+
+/* ── Modal ── */
+.modal-content { border-radius: var(--radius); border: none; box-shadow: var(--shadow-lg); }
+.modal-header { border-bottom: 1px solid var(--border); padding: 1rem 1.25rem; }
+.modal-title  { font-size: .95rem; font-weight: 700; }
+.modal-body   { padding: 1.25rem; }
+.modal-footer { border-top: 1px solid var(--border); padding: .9rem 1.25rem; }
+
+
+/* ================================================
+   PERBAIKAN RESPONSIVE — Mobile & small screen
+   ================================================ */
+
+/* ── Tabel: font & padding lebih kecil di HP ── */
+@media (max-width: 575px) {
+  .custom-table { font-size: .72rem; min-width: 420px; }
+  .custom-table thead th { padding: .5rem .5rem; font-size: .62rem; }
+  .custom-table tbody td { padding: .5rem .5rem; }
+
+  /* Sembunyikan kolom yang kurang penting di HP kecil */
+  .custom-table .col-hide-sm { display: none; }
+}
+
+/* ── Chart: lebih tinggi & label lebih kecil di HP ── */
+@media (max-width: 767px) {
+  .chart-bars { height: 90px; gap: .3rem; }
+  .bar-label  { font-size: .58rem; }
+}
+
+/* ── Modal: full screen di HP kecil ── */
+@media (max-width: 575px) {
+  .modal-dialog {
+    margin: 0;
+    max-width: 100%;
+    min-height: 100dvh;
+    align-items: flex-end;
+  }
+  .modal-content {
+    border-radius: 20px 20px 0 0;
+    max-height: 92dvh;
+    overflow-y: auto;
+  }
+  .modal-body { padding: 1rem; }
+}
+
+/* ── Form input di modal: lebih mudah diketuk di HP ── */
+@media (max-width: 767px) {
+  .form-control, .form-select {
+    font-size: .875rem;
+    height: 44px;
+    padding: .5rem .75rem;
+  }
+  textarea.form-control { height: auto; }
+  .modal-footer { flex-direction: column; gap: .5rem; }
+  .modal-footer .btn { width: 100%; }
+}
+
+/* ── Stat cards: tetap 2 kolom di HP kecil ── */
+@media (max-width: 400px) {
+  .stat-card { padding: .7rem; gap: .5rem; }
+  .stat-icon { width: 36px; height: 36px; font-size: .9rem; }
+  .stat-value { font-size: 1.2rem; }
+  .stat-label { font-size: .65rem; }
+}
+
+/* ── Kartu siswa: 1 kolom di HP sangat kecil ── */
+@media (max-width: 360px) {
+  .siswa-card { padding: .75rem; gap: .6rem; }
+  .siswa-avatar { width: 40px; height: 40px; font-size: .8rem; }
+  .siswa-name { font-size: .82rem; }
+}
+
+/* ── Section title lebih compact di HP ── */
+@media (max-width: 575px) {
+  .section-title { font-size: 1rem; }
+  .section-sub   { font-size: .78rem; margin-bottom: .9rem; }
+  .card-panel-body { padding: .75rem; }
+  .card-panel-header { padding: .75rem; }
+}
+
+/* ── Tombol aksi di tabel: lebih kecil di HP ── */
+@media (max-width: 575px) {
+  .btn-sm { padding: .2rem .4rem; font-size: .7rem; }
+}

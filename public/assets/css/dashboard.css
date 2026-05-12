@@ -1,0 +1,327 @@
+/* ================================================
+   dashboard.css — Layout dashboard utama
+   (navbar, sidebar, konten, responsive)
+   ================================================ */
+
+body.dashboard-page { background: var(--bg); }
+
+/* ── Navbar atas ── */
+.main-navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--navbar-h); z-index: 1050;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  display: flex; align-items: center;
+  padding: 0 1rem; gap: .75rem;
+}
+.navbar-brand {
+  display: flex; align-items: center; gap: .55rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--primary); text-decoration: none;
+  flex-shrink: 0;
+}
+.navbar-brand-icon {
+  width: 32px; height: 32px; border-radius: 9px;
+  background: var(--primary-light); color: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem;
+}
+.navbar-spacer { flex: 1; }
+.nav-avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .75rem; font-weight: 700; cursor: pointer;
+  flex-shrink: 0;
+}
+.navbar-toggler-custom {
+  background: none; border: none; cursor: pointer;
+  padding: .3rem; color: var(--txt-muted); font-size: 1.2rem;
+}
+
+/* ── Sidebar desktop ── */
+.page-wrapper { padding-top: var(--navbar-h); min-height: 100vh; overflow-x: hidden; }
+
+.sidebar {
+  position: fixed; top: var(--navbar-h); left: 0; bottom: 0;
+  width: var(--sidebar-w); z-index: 900;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto; overflow-x: hidden;
+  padding: 1rem 0;
+  transition: transform var(--ease);
+}
+
+/* Profil mini di sidebar */
+.sidebar-user {
+  display: flex; align-items: center; gap: .65rem;
+  padding: .75rem 1rem 1rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: .5rem;
+}
+.sidebar-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .75rem; font-weight: 700; flex-shrink: 0;
+}
+.sidebar-name  { font-size: .82rem; font-weight: 600; color: var(--txt-main); }
+.sidebar-role  { font-size: .7rem; color: var(--txt-muted); }
+
+/* Grup menu */
+.sidebar-group { padding: .25rem 0; }
+.sidebar-group-label {
+  font-size: .65rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--txt-light); padding: .5rem 1rem .25rem;
+}
+.sidebar-link {
+  display: flex; align-items: center; gap: .65rem;
+  padding: .55rem 1rem; margin: .1rem .5rem;
+  border-radius: var(--radius-sm);
+  color: var(--txt-muted); font-size: .84rem; font-weight: 500;
+  text-decoration: none; cursor: pointer;
+  transition: background var(--ease), color var(--ease);
+}
+.sidebar-link:hover { background: var(--primary-light); color: var(--primary); }
+.sidebar-link.active { background: var(--primary-light); color: var(--primary); font-weight: 600; }
+.sidebar-link i { font-size: .95rem; flex-shrink: 0; }
+
+/* ── Area konten utama ── */
+.main-content { max-width: 100%; overflow-x: hidden; }
+@media (min-width: 992px) { .main-content { margin-left: var(--sidebar-w); } }
+
+.content-section { display: none; padding: 1.25rem; }
+.content-section.active-section { display: block; }
+
+/* Judul section */
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem; font-weight: 700;
+  color: var(--txt-main); margin-bottom: .25rem;
+}
+.section-sub { color: var(--txt-muted); font-size: .84rem; margin-bottom: 1.25rem; }
+
+/* ── Responsive ≤ 991px (tablet) ── */
+@media (max-width: 991px) {
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+  }
+  .sidebar.show { transform: translateX(0); }
+  .sidebar-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.35); z-index: 899;
+  }
+  .sidebar-overlay.show { display: block; }
+}
+
+/* ── Responsive ≤ 767px (mobile) ── */
+@media (max-width: 767px) {
+  .content-section { padding: 1rem; }
+  .section-title { font-size: 1.15rem; }
+}
+
+/* ── Responsive ≤ 575px (small phone) ── */
+@media (max-width: 575px) {
+  .content-section { padding: .85rem .75rem; }
+  .main-navbar { padding: 0 .75rem; }
+}
+
+/* ── Touch friendly: area klik lebih besar di HP ── */
+@media (max-width: 767px) {
+  .sidebar-link { padding: .7rem 1rem; font-size: .88rem; }
+
+  /* Navbar lebih nyaman di HP */
+  .main-navbar { padding: 0 .85rem; gap: .5rem; }
+
+  /* Konten section padding cukup */
+  .content-section { padding: 1rem .85rem; }
+}
+
+/* ── Scroll behavior ── */
+.main-content { scroll-behavior: smooth; }
+
+/* ── Offcanvas sidebar mobile lebih rapi ── */
+.sidebar-offcanvas { width: 260px !important; }
+
+/* ================================================
+   MISSING CLASSES — diperlukan oleh dashboard.html
+   ================================================ */
+
+/* Navbar */
+.nav-brand-icon {
+  font-size: 1.1rem; color: var(--primary);
+}
+.nav-brand-text {
+  font-family: var(--font-display);
+  font-size: 1.05rem; font-weight: 700; color: var(--primary);
+}
+.user-dropdown-btn {
+  background: none; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: .35rem .65rem;
+  color: var(--txt-main); transition: background var(--ease);
+}
+.user-dropdown-btn:hover { background: var(--surface-2); }
+.avatar-sm {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; font-weight: 700; flex-shrink: 0;
+}
+
+/* Sidebar */
+.sidebar-user-info {
+  display: flex; align-items: center; gap: .65rem;
+  padding: .85rem 1rem; border-bottom: 1px solid var(--border);
+}
+.sidebar-user-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .75rem; font-weight: 700; flex-shrink: 0;
+}
+.sidebar-nav { margin: 0; }
+.sidebar-section-label {
+  display: block; font-size: .62rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--txt-light); padding: .6rem 1rem .3rem;
+}
+.sidebar-link-danger { color: var(--danger) !important; }
+.sidebar-link-danger:hover { background: #fef2f2 !important; color: var(--danger) !important; }
+.sidebar-bottom {
+  padding: .5rem .5rem 1rem;
+  border-top: 1px solid var(--border);
+}
+
+/* Layout konten */
+.content-inner { padding: 0; }
+.page-hgroup { margin-bottom: 1.1rem; }
+.page-eyebrow {
+  font-size: .7rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--primary); margin-bottom: .2rem;
+}
+.page-hgroup h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem; font-weight: 700;
+  color: var(--txt-main); margin-bottom: .25rem;
+}
+.page-desc { color: var(--txt-muted); font-size: .83rem; margin: 0; }
+
+/* Stat cards warna */
+.stat-blue .stat-icon { background: #e8f0ff; color: var(--primary); }
+.stat-red  .stat-icon { background: #fef2f2; color: var(--danger); }
+.stat-green .stat-icon { background: #f0fdf4; color: var(--success); }
+.stat-yellow .stat-icon { background: #fffbeb; color: var(--warning); }
+.stat-body { display: flex; flex-direction: column; gap: .1rem; min-width: 0; }
+
+/* Panel header/title */
+.panel-header {
+  padding: .85rem 1rem; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; gap: .5rem;
+}
+.panel-title {
+  font-size: .86rem; font-weight: 700;
+  color: var(--txt-main); margin: 0;
+  display: flex; align-items: center;
+}
+.btn-text-link {
+  font-size: .75rem; font-weight: 600; color: var(--primary);
+  text-decoration: none; white-space: nowrap;
+}
+.btn-text-link:hover { text-decoration: underline; }
+
+/* Category list */
+.category-list {
+  display: flex; flex-direction: column; gap: .5rem;
+  padding: .85rem 1rem;
+}
+.category-list li { display: flex; align-items: center; gap: .6rem; }
+
+/* Toolbar baris filter */
+.toolbar-row {
+  display: flex; flex-wrap: wrap; gap: .5rem;
+  margin-bottom: .75rem; align-items: center;
+}
+.search-group { flex: 1; min-width: 180px; }
+.toolbar-actions { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+.table-footer { border-top: 1px solid var(--border); }
+
+/* Quick card (akses cepat beranda) */
+.section-sub-label {
+  font-size: .7rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--txt-light); margin: 0;
+}
+.quick-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: .85rem .75rem;
+  display: flex; flex-direction: column; align-items: center;
+  gap: .45rem; cursor: pointer; color: var(--txt-muted);
+  font-size: .78rem; font-weight: 600;
+  transition: background var(--ease), color var(--ease), box-shadow var(--ease);
+  text-align: center;
+}
+.quick-card i { font-size: 1.3rem; color: var(--primary); }
+.quick-card:hover { background: var(--primary-light); color: var(--primary); box-shadow: var(--shadow-sm); }
+
+/* Poin scale info (tata tertib) */
+.poin-scale-info { display: flex; flex-wrap: wrap; gap: .5rem; }
+.poin-scale-item { display: flex; align-items: center; }
+
+/* Chart wrapper */
+.chart-bar-wrap { padding: 1rem; }
+
+/* Profil */
+.profil-info-row {
+  display: flex; justify-content: space-between;
+  align-items: center; padding: .45rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: .82rem;
+}
+
+/* Pengaturan */
+.setting-row {
+  display: flex; justify-content: space-between;
+  align-items: center; gap: 1rem;
+  padding: .7rem 0; border-bottom: 1px solid var(--border);
+}
+.about-row {
+  display: flex; justify-content: space-between;
+  align-items: center; padding: .45rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Custom modal */
+.custom-modal { border-radius: var(--radius); }
+
+/* ── Tombol hamburger mobile ── */
+.btn-hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--txt-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.btn-hamburger:hover {
+  background: var(--surface-2);
+  color: var(--primary);
+}
+
+/* Pastikan navbar tetap terlihat di semua ukuran layar */
+@media (max-width: 991px) {
+  .main-navbar {
+    display: flex !important;
+  }
+}
