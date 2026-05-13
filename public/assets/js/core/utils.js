@@ -353,11 +353,23 @@ async function prosesDaftar() {
     elErrUser.textContent = "Username minimal 3 karakter.";
     valid = false;
   }
-  if (!password || password.length < 6) {
-    elErrPass.textContent = "Kata sandi minimal 6 karakter.";
+  if (!password || password.length < 8) {
+    elErrPass.textContent = "Kata sandi minimal 8 karakter.";
+    valid = false;
+  } else if (!/[A-Z]/.test(password)) {
+    elErrPass.textContent = "Kata sandi harus mengandung minimal 1 huruf besar.";
+    valid = false;
+  } else if (!/[a-z]/.test(password)) {
+    elErrPass.textContent = "Kata sandi harus mengandung minimal 1 huruf kecil.";
+    valid = false;
+  } else if (!/[0-9]/.test(password)) {
+    elErrPass.textContent = "Kata sandi harus mengandung minimal 1 angka.";
+    valid = false;
+  } else if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
+    elErrPass.textContent = "Kata sandi harus mengandung minimal 1 karakter spesial (!@#$%^&*...).";
     valid = false;
   }
-  if (password !== konfirm) {
+  if (password && konfirm && password !== konfirm) {
     elErrKonf.textContent = "Kata sandi tidak cocok.";
     valid = false;
   }
